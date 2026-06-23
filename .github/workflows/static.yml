@@ -28,10 +28,13 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+          cache-dependency-path: stitch/package-lock.json
       - name: Install dependencies
-        run: cd stitch & npm ci
+        run: npm ci
+        working-directory: stitch
       - name: Build
-        run: cd stitch & npm run build
+        run: npm run build
+        working-directory: stitch
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
